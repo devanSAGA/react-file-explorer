@@ -1,0 +1,5 @@
+.main {
+  padding: 2rem 2rem 2rem 0;
+  background-color: var(--primary-color);
+  flex: 12;
+}

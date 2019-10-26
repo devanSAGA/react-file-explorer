@@ -1,0 +1,27 @@
+.menu-item {
+  padding-top: 2rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.menu-item__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-item__heading--text {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-m);
+  color: var(--primary-text-color);
+}
+
+.sub-menu-list {
+  margin-left: 15px;
+}
+
+.menu-item__heading--text .icon {
+  display: inline;
+  padding-right: 5px;
+}

@@ -1,0 +1,13 @@
+.App {
+  margin: 0 auto;
+  padding: 5rem 0;
+  width: 1160px;
+  display: flex;
+  min-height: 760px;
+}
+
+@media screen and (max-width: 1160px) {
+  .App {
+    width: 100%;
+  }
+}
