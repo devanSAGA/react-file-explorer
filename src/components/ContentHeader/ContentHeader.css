@@ -1,0 +1,6 @@
+.content__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  margin-bottom: 3rem;
+}

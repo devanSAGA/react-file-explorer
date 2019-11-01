@@ -1,0 +1,37 @@
+.breadcrumb {
+  display: flex;
+  padding: 5px;
+}
+
+.breadcrumb--goback {
+  outline: 0;
+  border: 0;
+  background: transparent;
+  padding-right: 2rem;
+}
+
+.breadcrumb--goback:hover {
+  cursor: pointer;
+}
+
+.breadcrumb__folder span {
+  color: var(--secondary-text-color);
+  font-size: var(--font-size-s);
+}
+
+.breadcrumb .is-last {
+  color: var(--primary-text-color);
+  font-weight: 600;
+  font-size: var(--font-size-s);
+}
+
+.breadcrumb .is-not-last .breadcrumb__folder--text:hover {
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.breadcrumb__folder--slash {
+  display: inline-block;
+  padding: 0 1rem;
+}
