@@ -1,0 +1,19 @@
+.folder {
+  display: flex;
+  margin: 1rem 2rem;
+  padding: 5px;
+  height: 9.6rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folder:hover {
+  cursor: pointer;
+}
+
+.folder--title {
+  padding-top: 7px;
+  color: var(--primary-text-color);
+  font-size: var(--font-size-xs);
+}

@@ -1,0 +1,15 @@
+.file {
+  display: flex;
+  margin: 1rem 2.5rem;
+  padding: 5px;
+  height: 9.6rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.file--title {
+  padding-top: 7px;
+  color: var(--primary-text-color);
+  font-size: var(--font-size-xs);
+}
