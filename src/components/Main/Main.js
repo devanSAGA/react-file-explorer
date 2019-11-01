@@ -59,7 +59,6 @@ class Main extends Component {
           goBack={goBack}
         />
         <FolderView
-          currentPath={currentPath}
           selectedFoldersContent={selectedFoldersContent}
           openFolder={openFolder}
         />
