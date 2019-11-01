@@ -13,12 +13,12 @@
 .menu-item__heading--text {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-m);
-  color: var(--primary-text-color);
+  font-size: var(--font-size-s);
+  color: var(--secondary-text-color);
 }
 
 .sub-menu-list {
-  margin-left: 15px;
+  margin-left: 1rem;
 }
 
 .menu-item__heading--text .icon {

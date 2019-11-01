@@ -1,5 +1,5 @@
 import React from "react";
-import { FileText, Folder, ChevronUp, ChevronDown } from "react-feather";
+import { ChevronUp, ChevronDown } from "react-feather";
 import "./MenuItem.css";
 
 class MenuItem extends React.Component {
@@ -13,18 +13,23 @@ class MenuItem extends React.Component {
     }));
   };
 
+  selectFolder = (type, url) => {
+    if (type === "folder") {
+      this.toggleMenuItem();
+      this.props.handleCurrentPathChange(url);
+    }
+  };
+
   render() {
-    const { title, type, childNodes } = this.props;
+    const { title, type, childNodes, url } = this.props;
     const { isOpened } = this.state;
     return (
       <div className="menu-item">
-        <div onClick={this.toggleMenuItem} className="menu-item__heading">
+        <div
+          onClick={() => this.selectFolder(type, url)}
+          className="menu-item__heading"
+        >
           <div className={"menu-item__heading--text "}>
-            {type === "folder" ? (
-              <Folder className="icon" />
-            ) : (
-              <FileText className="icon" />
-            )}
             <span>{title}</span>
           </div>
           {type === "folder" && childNodes.length ? (
@@ -41,7 +46,12 @@ class MenuItem extends React.Component {
         <div className="sub-menu-list ">
           {isOpened && childNodes.length
             ? childNodes.map(item => {
-                return <MenuItem {...item} />;
+                return (
+                  <MenuItem
+                    {...item}
+                    handleCurrentPathChange={this.props.handleCurrentPathChange}
+                  />
+                );
               })
             : null}
         </div>

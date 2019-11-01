@@ -2,24 +2,24 @@ export const DEFAULT_FOLDER_CONFIG = [
   {
     title: "apps",
     type: "folder",
-    isSelected: false,
+    url: "/apps",
     childNodes: []
   },
   {
     title: "pictures",
     type: "folder",
-    isSelected: false,
+    url: "/pictures",
     childNodes: []
   },
   {
     title: "videos",
     type: "folder",
-    isSelected: false,
+    url: "/videos",
     childNodes: [
       {
         title: "movies",
         type: "folder",
-        isSelected: false,
+        url: "/videos/movies",
         childNodes: []
       }
     ]
@@ -27,23 +27,23 @@ export const DEFAULT_FOLDER_CONFIG = [
   {
     title: "docs",
     type: "folder",
-    isSelected: false,
+    url: "/docs",
     childNodes: [
       {
         title: "work",
         type: "folder",
-        isSelected: false,
+        url: "/docs/work",
         childNodes: [
           {
             title: "e.pdf",
             type: "file",
-            isSelected: false,
+            url: "",
             childNodes: []
           },
           {
             title: "f.ts",
             type: "file",
-            isSelected: false,
+            url: "",
             childNodes: []
           }
         ]
@@ -51,13 +51,13 @@ export const DEFAULT_FOLDER_CONFIG = [
       {
         title: "c.pdf",
         type: "file",
-        isSelected: false,
+        url: "",
         childNodes: []
       },
       {
         title: "d.docx",
         type: "file",
-        isSelected: false,
+        url: "",
         childNodes: []
       }
     ]
@@ -65,13 +65,13 @@ export const DEFAULT_FOLDER_CONFIG = [
   {
     title: "a.pdf",
     type: "file",
-    isSelected: false,
+    url: "",
     childNodes: []
   },
   {
     title: "b.jpg",
     type: "file",
-    isSelected: false,
+    url: "",
     childNodes: []
   }
 ];
