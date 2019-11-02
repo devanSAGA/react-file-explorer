@@ -1,0 +1,65 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form__heading {
+  color: var(--primary-text-color);
+  font-size: var(--font-size-s);
+  font-weight: 400;
+  padding: 1rem 0;
+}
+
+.form__toggle {
+  display: flex;
+  padding: 5px 0 1rem 0;
+}
+
+.form__toggle--leftoption,
+.form__toggle--rightoption {
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  padding: 7px;
+  min-width: 7rem;
+  text-align: center;
+}
+
+.form__toggle--leftoption {
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.form__toggle--rightoption {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.form__toggle .selected {
+  background-color: var(--primary-brand-color);
+  color: var(--secondary-color);
+}
+
+.form__toggle .not-selected {
+  color: var(--secondary-text-color);
+  border: 1px solid var(--tertiary-color);
+}
+
+.form__input {
+  margin: 1rem 0;
+  width: 25rem;
+  border-radius: 7px;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--tertiary-color);
+}
+
+.form__button {
+  width: 25rem;
+  background-color: var(--primary-brand-color);
+  color: var(--secondary-color);
+  padding: 1rem 0;
+  margin: 1rem 0;
+  border: 0;
+  outline: 0;
+  border-radius: 7px;
+}

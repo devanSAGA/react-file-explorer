@@ -1,15 +1,35 @@
 import React, { Component } from "react";
+import Modal from "../Modal";
+import Info from "../Info";
+import ContextMenu from "../ContextMenu";
 import folderIcon from "../../assets/folderIcon.png";
 import "./Folder.css";
 
 class Folder extends Component {
+  state = {
+    showInfoModal: false
+  };
+
   handleRightClick = event => {
     event.preventDefault();
     this.props.openContextMenu(this.props.title);
   };
 
+  openInfoModal = () => {
+    this.setState({
+      showInfoModal: true
+    });
+    this.props.closeContextMenu();
+  };
+
+  closeInfoModal = () => {
+    this.setState({
+      showInfoModal: false
+    });
+  };
+
   render() {
-    const { title, url, openFolder, showContextMenu } = this.props;
+    const { title, url, info, openFolder, showContextMenu } = this.props;
     return (
       <div
         className="folder"
@@ -19,19 +39,28 @@ class Folder extends Component {
         <img src={folderIcon} alt={title} className="folder__icon" />
         <span className="folder--title">{title}</span>
         {showContextMenu ? (
-          <div className="context-menu">
-            <div className="context-menu__actions">
-              <button
-                className="context-menu__actions--primary"
-                onClick={() => openFolder(url)}
-              >
-                Open
-              </button>
-              <button className="context-menu__actions--primary">Info</button>
-              <button className="context-menu__actions--danger">Delete</button>
-            </div>
-          </div>
+          <ContextMenu>
+            <button
+              className="context-menu__actions--primary"
+              onClick={() => openFolder(url)}
+            >
+              Open
+            </button>
+            <button
+              onClick={() => this.openInfoModal(title)}
+              className="context-menu__actions--primary"
+            >
+              Info
+            </button>
+            <button className="context-menu__actions--danger">Delete</button>
+          </ContextMenu>
         ) : null}
+        <Modal
+          isOpen={this.state.showInfoModal}
+          closeModal={this.closeInfoModal}
+        >
+          <Info title={title} type="folder" info={info} />
+        </Modal>
       </div>
     );
   }

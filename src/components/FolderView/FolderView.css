@@ -3,3 +3,16 @@
   flex-wrap: wrap;
   width: 100%;
 }
+
+.create-new__button {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 1rem;
+  height: 9.6rem;
+}
+
+.create-new__button img {
+  height: 100%;
+}
