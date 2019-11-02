@@ -1,13 +1,7 @@
 .App {
   margin: 0 auto;
-  padding: 5rem 0;
-  width: 1160px;
+  padding: 1rem;
+  width: 100%;
   display: flex;
-  min-height: 760px;
-}
-
-@media screen and (max-width: 1160px) {
-  .App {
-    width: 100%;
-  }
+  min-height: 100vh;
 }
