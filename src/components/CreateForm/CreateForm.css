@@ -53,6 +53,12 @@
   border: 1px solid var(--tertiary-color);
 }
 
+.form__error {
+  padding: 1rem 5px;
+  color: var(--error-text-color);
+  font-size: var(--font-size-s);
+}
+
 .form__button {
   width: 25rem;
   background-color: var(--primary-brand-color);

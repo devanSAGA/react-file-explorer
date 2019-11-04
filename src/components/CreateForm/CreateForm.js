@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createNewFile, createNewFolder } from "../../actions/directories";
 import "./CreateForm.css";
 
 class CreateForm extends Component {
@@ -33,6 +35,44 @@ class CreateForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { name, creator, size, date, type } = this.state;
+    if (!name.trim() || !creator.trim() || !date.trim() || !size.trim()) {
+      this.setState({
+        error: "Please fill all fields"
+      });
+    } else {
+      const url =
+        this.props.currentPath === "/"
+          ? `/${name}`
+          : `${this.props.currentPath}/${name}`;
+      const newItem = {
+        title: name,
+        type,
+        url,
+        info: {
+          size,
+          creator,
+          date
+        },
+        ...(type === "folder" ? { childNodes: [] } : {})
+      };
+
+      if (type === "folder") {
+        this.props.createNewFolder(newItem);
+        this.props.closeCreateFolderForm();
+      } else {
+        this.props.createNewFile(newItem);
+        this.props.closeCreateFolderForm();
+      }
+      this.setState({
+        type: "folder",
+        name: "",
+        creator: "",
+        size: "",
+        date: "",
+        error: ""
+      });
+    }
   };
 
   render() {
@@ -91,10 +131,23 @@ class CreateForm extends Component {
           value={this.state.date}
           onChange={this.handleChange}
         />
-        <button className="form__button">Create</button>
+        {this.state.error ? (
+          <div className="form__error">{this.state.error}</div>
+        ) : null}
+        <button onClick={this.handleSubmit} className="form__button">
+          Create
+        </button>
       </form>
     );
   }
 }
 
-export default CreateForm;
+const mapDispatchToProps = dispatch => ({
+  createNewFolder: newFolder => dispatch(createNewFolder(newFolder)),
+  createNewFile: newFile => dispatch(createNewFile(newFile))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateForm);
