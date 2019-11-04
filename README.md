@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ```
 git clone https://github.com/devanSAGA/react-file-explorer.git
-cd Youtube-Clone
+cd react-file-explorer
 yarn (or) npm install
 yarn start (or) npm start
 ```
