@@ -1,4 +1,5 @@
 import React from "react";
+import { isEmpty } from "../../utils/functions";
 import { ChevronUp, ChevronDown } from "react-feather";
 import "./MenuItem.css";
 
@@ -23,6 +24,7 @@ class MenuItem extends React.Component {
   render() {
     const { title, type, childNodes, url } = this.props;
     const { isOpened } = this.state;
+    const hasChildNodes = !isEmpty(childNodes);
     return (
       <div className="menu-item">
         <div
@@ -32,7 +34,7 @@ class MenuItem extends React.Component {
           <div className={"menu-item__heading--text "}>
             <span>{title}</span>
           </div>
-          {type === "folder" && childNodes.length ? (
+          {type === "folder" && hasChildNodes ? (
             !isOpened ? (
               <ChevronDown
                 size={16}
@@ -44,8 +46,8 @@ class MenuItem extends React.Component {
           ) : null}
         </div>
         <div className="sub-menu-list ">
-          {isOpened && childNodes.length
-            ? childNodes.map(item => {
+          {isOpened && hasChildNodes
+            ? Object.entries(childNodes).map(([key, item], index) => {
                 return (
                   <MenuItem
                     {...item}

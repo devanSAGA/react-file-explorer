@@ -1,13 +1,12 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Main from "./components/Main";
 import Sidebar from "./components/Sidebar";
-import { DEFAULT_FOLDER_CONFIG } from "./utils/config";
 import "./App.css";
 
 class App extends Component {
   state = {
-    directories: DEFAULT_FOLDER_CONFIG,
     currentPath: "/"
   };
 
@@ -46,11 +45,11 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar
-          directories={this.state.directories}
+          directories={this.props.directories}
           handleCurrentPathChange={this.handleCurrentPathChange}
         />
         <Main
-          directories={this.state.directories}
+          directories={this.props.directories}
           currentPath={this.state.currentPath}
           updateCurrentPath={this.updateCurrentPath}
           goBack={this.goBack}
@@ -61,4 +60,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    directories: state.directories
+  };
+};
+
+export default connect(mapStateToProps)(App);

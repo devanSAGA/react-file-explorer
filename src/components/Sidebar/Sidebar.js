@@ -7,7 +7,7 @@ const Sidebar = ({ directories, handleCurrentPathChange }) => {
   return (
     <div className="sidebar">
       <div className="menu">
-        {directories.map((item, index) => {
+        {Object.entries(directories.childNodes).map(([key, item], index) => {
           return (
             <MenuItem
               {...item}

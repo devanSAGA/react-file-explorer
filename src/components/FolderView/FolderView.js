@@ -57,32 +57,35 @@ class FolderView extends Component {
   };
 
   render() {
-    const { selectedFoldersContent, openFolder } = this.props;
+    const { selectedFoldersContent, openFolder, currentPath } = this.props;
     return (
       <div className="folder-view" ref={this.setWrapperRef}>
-        {selectedFoldersContent.map((item, index) => {
-          return item.type === "folder" ? (
-            <Folder
-              title={item.title}
-              url={item.url}
-              info={item.info}
-              openFolder={openFolder}
-              showContextMenu={item.title === this.state.showContextMenuOf}
-              openContextMenu={this.openContextMenu}
-              closeContextMenu={this.closeContextMenu}
-              openInfoModal={this.openInfoModal}
-            />
-          ) : (
-            <File
-              title={item.title}
-              info={item.info}
-              showContextMenu={item.title === this.state.showContextMenuOf}
-              openContextMenu={this.openContextMenu}
-              closeContextMenu={this.closeContextMenu}
-              openInfoModal={this.openInfoModal}
-            />
-          );
-        })}
+        {Object.entries(selectedFoldersContent.childNodes).map(
+          ([key, item], index) => {
+            return item.type === "folder" ? (
+              <Folder
+                title={item.title}
+                url={item.url}
+                info={item.info}
+                openFolder={openFolder}
+                showContextMenu={item.title === this.state.showContextMenuOf}
+                openContextMenu={this.openContextMenu}
+                closeContextMenu={this.closeContextMenu}
+                openInfoModal={this.openInfoModal}
+              />
+            ) : (
+              <File
+                title={item.title}
+                url={item.url}
+                info={item.info}
+                showContextMenu={item.title === this.state.showContextMenuOf}
+                openContextMenu={this.openContextMenu}
+                closeContextMenu={this.closeContextMenu}
+                openInfoModal={this.openInfoModal}
+              />
+            );
+          }
+        )}
         <button
           className="create-new__button"
           onClick={this.openCreateFolderForm}
@@ -93,7 +96,10 @@ class FolderView extends Component {
           isOpen={this.state.showCreateFolderModal}
           closeModal={this.closeCreateFolderForm}
         >
-          <CreateForm />
+          <CreateForm
+            currentPath={currentPath}
+            closeCreateFolderForm={this.closeCreateFolderForm}
+          />
         </Modal>
       </div>
     );

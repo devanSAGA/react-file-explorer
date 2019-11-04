@@ -5,15 +5,14 @@ import "./Main.css";
 
 class Main extends Component {
   state = {
-    selectedFoldersContent: []
+    selectedFoldersContent: this.props.directories
   };
 
-  componentDidMount() {
-    this.getSelectedFoldersContent(this.props.currentPath);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.currentPath !== this.props.currentPath) {
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.currentPath !== this.props.currentPath ||
+      prevProps.directories !== this.props.directories
+    ) {
       this.getSelectedFoldersContent(this.props.currentPath);
     }
   }
@@ -29,11 +28,7 @@ class Main extends Component {
       let selectedFoldersContent = directories;
 
       const findFolder = (folderName, foldersList) => {
-        for (let folder of foldersList) {
-          if (folder && folder.title === folderName) {
-            return folder.childNodes;
-          }
-        }
+        return foldersList.childNodes[folderName];
       };
 
       for (let i = 1; i < foldersList.length; i++) {
@@ -51,6 +46,7 @@ class Main extends Component {
   render() {
     const { currentPath, updateCurrentPath, goBack, openFolder } = this.props;
     const { selectedFoldersContent } = this.state;
+    console.log(selectedFoldersContent);
     return (
       <div className="main">
         <ContentHeader
@@ -61,6 +57,7 @@ class Main extends Component {
         <FolderView
           selectedFoldersContent={selectedFoldersContent}
           openFolder={openFolder}
+          currentPath={currentPath}
         />
       </div>
     );
